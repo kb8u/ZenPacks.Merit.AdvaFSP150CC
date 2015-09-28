@@ -1,0 +1,3 @@
+[zenoss.zenpacks]
+ZenPacks.Merit.AdvaFSP150CC = ZenPacks.Merit.AdvaFSP150CC
+
