@@ -22,11 +22,13 @@ class FSP150Device(Device,ZenPackPersistence):
 
     meta_type = 'FSP150Device'
 
+    neIndex = None
+
     _relations = Device._relations + (
         ('FSP150Slot',
          ToManyCont(ToOne,
                     'ZenPacks.Merit.AdvaFSP150.FSP150Slot',
-                    'FSP150Slot')),
+                    'FSP150Device')),
         )
 
     factory_type_information = deepcopy(Device.factory_type_information)
