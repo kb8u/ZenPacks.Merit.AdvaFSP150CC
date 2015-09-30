@@ -20,14 +20,14 @@ from copy import deepcopy
 class FSP150Device(Device,ZenPackPersistence):
     "A FSP150 Device"
 
-    meta_type = 'FSP150Device'
+    meta_type = portal_type = 'FSP150Device'
 
     neIndex = None
 
     _relations = Device._relations + (
         ('FSP150Slot',
          ToManyCont(ToOne,
-                    'ZenPacks.Merit.AdvaFSP150.FSP150Slot',
+                    'ZenPacks.Merit.AdvaFSP150CC.FSP150Slot',
                     'FSP150Device')),
         )
 

@@ -59,7 +59,7 @@ class FSP150Slot(DeviceComponent, ManagedEntity, ZenPackPersistence):
         
     _relations = (("FSP150Device",
                    ToOne(ToManyCont,
-                         "ZenPacks.Merit.AdvaFSP150.FSP150Device",
+                         "ZenPacks.Merit.AdvaFSP150CC.FSP150Device",
                          "FSP150Slot")))
 
     factory_type_information = ({

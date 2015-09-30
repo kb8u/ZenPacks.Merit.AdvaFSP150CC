@@ -16,7 +16,7 @@ for serial number, model, etc.
 
 from Products.DataCollector.plugins.CollectorPlugin import SnmpPlugin, GetTableMap, GetMap
 from Products.DataCollector.plugins.DataMaps import ObjectMap
-from ZenPacks.Merit.AdvaFSP150.lib.FSP150neType import NetworkElementType
+from ZenPacks.Merit.AdvaFSP150.lib.chassisModels import NetworkElementType
 
 
 class FSP150DeviceMib(SnmpPlugin):
@@ -24,11 +24,11 @@ class FSP150DeviceMib(SnmpPlugin):
     # from Adva CM-ENTITY-MIB
     modname = "ZenPacks.Merit.AdvaFSP150CC.FSP150Device"
 
-    snmpGetMap = GetTableMap('.1.3.6.1.4.1.2544.1.12.3.1.1',
-                             'networkElementTable',
-                             { '1.1.1' : 'neIndex',
-                               '1.3.1' : 'neType',
-                               '1.6.1' : 'neDescription'})
+    snmpGetTableMaps = (GetTableMap('networkElementTable',
+                                    '.1.3.6.1.4.1.2544.1.12.3.1.1',
+                                    { '.1.1.1' : 'neIndex',
+                                      '.1.3.1' : 'neType',
+                                      '.1.6.1' : 'neDescription'}),)
 
     def process(self, device, results, log):
         log.info('processing %s for device %s' % self.name(), device.id())
@@ -47,8 +47,10 @@ class FSP150DeviceMib(SnmpPlugin):
             model = 'unknown'
 
         rm = self.relMap()
+        om = self.objectMap()
 
         om.neIndex = int(neTable['neIndex'])
 
         rm.append(om)
+
         return rm
