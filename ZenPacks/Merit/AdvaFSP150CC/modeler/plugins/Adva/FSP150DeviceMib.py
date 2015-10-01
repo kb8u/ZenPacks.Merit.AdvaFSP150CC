@@ -16,7 +16,7 @@ for serial number, model, etc.
 
 from Products.DataCollector.plugins.CollectorPlugin import SnmpPlugin, GetTableMap, GetMap
 from Products.DataCollector.plugins.DataMaps import ObjectMap
-from ZenPacks.Merit.AdvaFSP150.lib.chassisModels import NetworkElementType
+from ZenPacks.Merit.AdvaFSP150CC.lib.chassisModels import NetworkElementType
 
 
 class FSP150DeviceMib(SnmpPlugin):
