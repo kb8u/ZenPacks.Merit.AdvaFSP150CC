@@ -3,7 +3,7 @@
 <!-- ('', 'zport', 'dmd', 'Devices', 'Network', 'Adva-FSP150') -->
 <object id='/zport/dmd/Devices/Network/Adva-FSP150' module='Products.ZenModel.DeviceClass' class='DeviceClass'>
 <property visible="True" type="string" id="zPythonClass" >
-ZenPacks.Merit.AdvaFSP150CC
+ZenPacks.Merit.AdvaFSP150CC.FSP150Device
 </property>
 <property visible="True" type="lines" id="zCollectorPlugins" >
 ['zenoss.snmp.NewDeviceMap', 'zenoss.snmp.DeviceMap', 'zenoss.snmp.InterfaceMap', 'Adva.FSP150DeviceMib']
