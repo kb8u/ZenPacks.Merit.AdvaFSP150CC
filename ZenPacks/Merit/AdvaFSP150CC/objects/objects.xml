@@ -5,5 +5,8 @@
 <property visible="True" type="string" id="zPythonClass" >
 ZenPacks.Merit.AdvaFSP150CC
 </property>
+<property visible="True" type="lines" id="zCollectorPlugins" >
+['zenoss.snmp.NewDeviceMap', 'zenoss.snmp.DeviceMap', 'zenoss.snmp.InterfaceMap', 'Adva.FSP150DeviceMib']
+</property>
 </object>
 </objects>

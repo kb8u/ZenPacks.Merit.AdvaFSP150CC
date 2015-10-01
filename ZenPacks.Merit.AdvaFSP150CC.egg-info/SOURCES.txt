@@ -29,8 +29,12 @@ ZenPacks/Merit/AdvaFSP150CC/migrate/ExampleMigration.py
 ZenPacks/Merit/AdvaFSP150CC/migrate/ExampleMigration.pyc
 ZenPacks/Merit/AdvaFSP150CC/migrate/__init__.py
 ZenPacks/Merit/AdvaFSP150CC/modeler/__init__.py
+ZenPacks/Merit/AdvaFSP150CC/modeler/__init__.pyc
 ZenPacks/Merit/AdvaFSP150CC/modeler/plugins/__init__.py
+ZenPacks/Merit/AdvaFSP150CC/modeler/plugins/__init__.pyc
 ZenPacks/Merit/AdvaFSP150CC/modeler/plugins/Adva/FSP150DeviceMib.py
+ZenPacks/Merit/AdvaFSP150CC/modeler/plugins/Adva/FSP150DeviceMib.pyc
 ZenPacks/Merit/AdvaFSP150CC/modeler/plugins/Adva/__init__.py
+ZenPacks/Merit/AdvaFSP150CC/modeler/plugins/Adva/__init__.pyc
 ZenPacks/Merit/AdvaFSP150CC/objects/objects.xml
 ZenPacks/Merit/AdvaFSP150CC/tests/__init__.py
