@@ -1,3 +1,9 @@
 <?xml version="1.0"?>
 <objects>
+<!-- ('', 'zport', 'dmd', 'Devices', 'Network', 'Adva-FSP150') -->
+<object id='/zport/dmd/Devices/Network/Adva-FSP150' module='Products.ZenModel.DeviceClass' class='DeviceClass'>
+<property visible="True" type="string" id="zPythonClass" >
+ZenPacks.Merit.AdvaFSP150CC
+</property>
+</object>
 </objects>
