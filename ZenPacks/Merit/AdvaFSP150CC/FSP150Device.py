@@ -24,6 +24,10 @@ class FSP150Device(Device,ZenPackPersistence):
 
     neIndex = None
 
+    _properties = Device._properties + (
+        {'id' : 'neIndex','type':'int', 'mode':''},
+    )
+
     _relations = Device._relations + (
         ('FSP150Slot',
          ToManyCont(ToOne,

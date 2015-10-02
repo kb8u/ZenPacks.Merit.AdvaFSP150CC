@@ -26,30 +26,30 @@ class FSP150DeviceMib(SnmpPlugin):
 
     snmpGetTableMaps = (GetTableMap('networkElementTable',
                                     '.1.3.6.1.4.1.2544.1.12.3.1.1',
-                                    { '.1.1.1' : 'neIndex',
-                                      '.1.3.1' : 'neType',
-                                      '.1.6.1' : 'neDescription'}),)
+                                    { '.1.1' : 'neIndex',
+                                      '.1.3' : 'neType',
+                                      '.1.6' : 'neDescription'}),)
 
     def process(self, device, results, log):
-        log.info('processing %s for device %s' % self.name(), device.id())
+        log.info('processing %s for device %s' % (self.name(), device.id))
         getdata, tabledata = results
 
-        neTable = tabledata.get('networkElementTable')
+        neTable = tabledata.get('networkElementTable')['1']
         if not neTable:
             log.warn('Could not get networkElementTable in %s' % self.name())
             return
 
         # set hardware model
         try:
-            model = chassisModels[ NetworkElementType['neType'] ]
+            model = NetworkElementType[ str(neTable['neType']) ]
         except KeyError:
-            log.warn('Could not find model number %s in zenpack lib/FSP150ChassisModels.py' % NetworkElementType['neType'])
+            log.warn('Could not find model number %s in zenpack lib/FSP150ChassisModels.py' % neTable['neType'])
             model = 'unknown'
 
         rm = self.relMap()
         om = self.objectMap()
 
-        om.neIndex = int(neTable['neIndex'])
+        om.neIndex = neTable['neIndex']
 
         rm.append(om)
 
