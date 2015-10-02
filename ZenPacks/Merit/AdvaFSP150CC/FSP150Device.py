@@ -9,23 +9,17 @@
 #
 ######################################################################
 
-from Globals import InitializeClass
-from Products.ZenModel.ZenPackPersistence import ZenPackPersistence
 from Products.ZenRelations.RelSchema import *
 from Products.ZenModel.Device import Device
-from Products.ZenModel.ZenossSecurity import ZEN_VIEW
-from copy import deepcopy
 
 
-class FSP150Device(Device,ZenPackPersistence):
+class FSP150Device(Device):
     "A FSP150 Device"
-
-    meta_type = portal_type = 'FSP150Device'
 
     neIndex = None
 
     _properties = Device._properties + (
-        {'id' : 'neIndex','type':'int', 'mode':''},
+        {'id' : 'neIndex','type':'int'},
     )
 
     _relations = Device._relations + (
@@ -33,13 +27,4 @@ class FSP150Device(Device,ZenPackPersistence):
          ToManyCont(ToOne,
                     'ZenPacks.Merit.AdvaFSP150CC.FSP150Slot',
                     'FSP150Device')),
-        )
-
-    factory_type_information = deepcopy(Device.factory_type_information)
-
-    def __init__(self, *args, **kw):
-        Device.__init__(self, *args, **kw)
-        self.buildRelations()
-
-
-InitializeClass(FSP150Device)
+    )
