@@ -46,11 +46,11 @@ class FSP150DeviceMib(SnmpPlugin):
             log.warn('Could not find model number %s in zenpack lib/FSP150ChassisModels.py' % neTable['neType'])
             model = 'unknown'
 
-        rm = self.relMap()
         om = self.objectMap()
 
+        log.debug('setting neIndex to %s' % neTable['neIndex'])
         om.neIndex = neTable['neIndex']
+        log.debug('setting HW tag to %s' % model)
+        om.setHWTag = model
 
-        rm.append(om)
-
-        return rm
+        return om
