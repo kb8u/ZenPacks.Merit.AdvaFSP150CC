@@ -41,16 +41,20 @@ class FSP150DeviceMib(SnmpPlugin):
 
         # set hardware model
         try:
-            model = NetworkElementType[ str(neTable['neType']) ]
+            tag = NetworkElementType[ str(neTable['neType']) ]
         except KeyError:
-            log.warn('Could not find model number %s in zenpack lib/FSP150ChassisModels.py' % neTable['neType'])
+            log.warn('Could not find tag %s in zenpack lib/FSP150ChassisModels.py' % neTable['neType'])
+            tag = 'unknown'
+        try:
+            model = neTable['neDescription']
+        except KeyError:
+            log.warn("Couldn't find model from neDescription")
             model = 'unknown'
 
         om = self.objectMap()
 
-        log.debug('setting neIndex to %s' % neTable['neIndex'])
         om.neIndex = neTable['neIndex']
-        log.debug('setting HW tag to %s' % model)
-        om.setHWTag = model
+        om.neType = tag
+        om.setHWProductKey = model
 
         return om
