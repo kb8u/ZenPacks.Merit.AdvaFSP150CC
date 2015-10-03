@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <objects>
-<!-- ('', 'zport', 'dmd', 'Devices', 'Network', 'AdvaFSP150') -->
-<object id='/zport/dmd/Devices/Network/AdvaFSP150' module='Products.ZenModel.DeviceClass' class='DeviceClass'>
-<property visible="True" type="string" id="zPythonClass" >
-ZenPacks.Merit.AdvaFSP150CC.FSP150Device
-</property>
+<!-- ('', 'zport', 'dmd', 'Devices', 'Nework', 'AdvaFSP150') -->
+<object id='/zport/dmd/Devices/Nework/AdvaFSP150' module='Products.ZenModel.DeviceClass' class='DeviceClass'>
 <property visible="True" type="lines" id="zCollectorPlugins" >
 ['Adva.FSP150DeviceMib']
+</property>
+<property visible="True" type="string" id="zPythonClass" >
+ZenPacks.Merit.AdvaFSP150CC.FSP150Device
 </property>
 </object>
 </objects>

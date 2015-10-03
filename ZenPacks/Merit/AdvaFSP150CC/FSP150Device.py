@@ -17,9 +17,11 @@ class FSP150Device(Device):
     "A FSP150 Device"
 
     neIndex = None
+    neType = 'unknown'
 
     _properties = Device._properties + (
         {'id' : 'neIndex','type':'int'},
+        {'id' : 'neType', 'type':'string'},
     )
 
     _relations = Device._relations + (
