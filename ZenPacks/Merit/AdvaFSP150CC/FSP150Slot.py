@@ -34,6 +34,7 @@ class FSP150Slot(DeviceComponent, ManagedEntity, ZenPackPersistence):
     portal_type = meta_type = 'FSP150Slot'
 
     # set default _properties
+    neShelfSlotIndex = ''
     slotIndex = -1
     slotCardType = 'none'
     slotCardUnitName = 'Not set by modeler'
@@ -45,6 +46,7 @@ class FSP150Slot(DeviceComponent, ManagedEntity, ZenPackPersistence):
     slotCardPhysicalAddress = 'Not set by modeler'
 
     _properties = (
+        {'id':'neShelfSlotIndex', type:'string', 'mode':''},
         # from CM-ENTITY-MIB
         {'id':'slotIndex', 'type':'int', 'mode':''},
         {'id':'slotCardType', 'type':'string', 'mode':''},
