@@ -24,6 +24,7 @@ ZenPacks/Merit/AdvaFSP150CC/info.py
 ZenPacks/Merit/AdvaFSP150CC/interfaces.py
 ZenPacks/Merit/AdvaFSP150CC/lib/__init__.py
 ZenPacks/Merit/AdvaFSP150CC/lib/__init__.pyc
+ZenPacks/Merit/AdvaFSP150CC/lib/cardModels.py
 ZenPacks/Merit/AdvaFSP150CC/lib/chassisModels.py
 ZenPacks/Merit/AdvaFSP150CC/lib/chassisModels.pyc
 ZenPacks/Merit/AdvaFSP150CC/modeler/__init__.py
@@ -32,6 +33,8 @@ ZenPacks/Merit/AdvaFSP150CC/modeler/plugins/__init__.py
 ZenPacks/Merit/AdvaFSP150CC/modeler/plugins/__init__.pyc
 ZenPacks/Merit/AdvaFSP150CC/modeler/plugins/Adva/FSP150DeviceMib.py
 ZenPacks/Merit/AdvaFSP150CC/modeler/plugins/Adva/FSP150DeviceMib.pyc
+ZenPacks/Merit/AdvaFSP150CC/modeler/plugins/Adva/FSP150SlotMib.py
+ZenPacks/Merit/AdvaFSP150CC/modeler/plugins/Adva/FSP150SlotMib.pyc
 ZenPacks/Merit/AdvaFSP150CC/modeler/plugins/Adva/__init__.py
 ZenPacks/Merit/AdvaFSP150CC/modeler/plugins/Adva/__init__.pyc
 ZenPacks/Merit/AdvaFSP150CC/objects/objects.xml
