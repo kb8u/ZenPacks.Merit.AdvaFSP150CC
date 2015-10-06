@@ -29,6 +29,7 @@ ZenPacks/Merit/AdvaFSP150CC/lib/cardModels.pyc
 ZenPacks/Merit/AdvaFSP150CC/lib/chassisModels.py
 ZenPacks/Merit/AdvaFSP150CC/lib/chassisModels.pyc
 ZenPacks/Merit/AdvaFSP150CC/lib/slotTypes.py
+ZenPacks/Merit/AdvaFSP150CC/lib/slotTypes.pyc
 ZenPacks/Merit/AdvaFSP150CC/modeler/__init__.py
 ZenPacks/Merit/AdvaFSP150CC/modeler/__init__.pyc
 ZenPacks/Merit/AdvaFSP150CC/modeler/plugins/__init__.py

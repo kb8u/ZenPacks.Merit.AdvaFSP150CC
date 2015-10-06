@@ -59,8 +59,9 @@ class FSP150SlotMib(SnmpPlugin):
         if not indexes:
             return
 
-        om = self.objectMap()
+        rm = self.relMap()
         for index in indexes:
+            om = self.objectMap()
             om.neShelfSlotIndex = index
             om.neIndex = int(index.split('.')[-1])
             om.slotEntityIndex = slotTable['2.' + index]['slotIndex']
@@ -74,7 +75,8 @@ class FSP150SlotMib(SnmpPlugin):
             om.slotCardSerialNumber = slotTable['11.' + index]['slotIndex']
             om.slotCardSecondaryState = slotTable['15.' + index]['slotIndex']
             om.slotCardPhysicalAddress = slotTable['16.' + index]['slotIndex']
+            rm.append(om)
 
         log.debug('om is %s' % om)
 
-        return om
+        return rm

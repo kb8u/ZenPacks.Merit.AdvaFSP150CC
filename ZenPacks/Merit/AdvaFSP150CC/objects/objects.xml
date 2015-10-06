@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <objects>
-<!-- ('', 'zport', 'dmd', 'Devices', 'Nework', 'AdvaFSP150') -->
-<object id='/zport/dmd/Devices/Nework/AdvaFSP150' module='Products.ZenModel.DeviceClass' class='DeviceClass'>
+<!-- ('', 'zport', 'dmd', 'Devices', 'Network', 'AdvaFSP150') -->
+<object id='/zport/dmd/Devices/Network/AdvaFSP150' module='Products.ZenModel.DeviceClass' class='DeviceClass'>
 <property visible="True" type="lines" id="zCollectorPlugins" >
 ['Adva.FSP150DeviceMib', 'Adva.FSP150SlotMib']
 </property>
