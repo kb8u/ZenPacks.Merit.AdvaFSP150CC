@@ -59,10 +59,10 @@ class FSP150Slot(DeviceComponent, ManagedEntity, ZenPackPersistence):
         {'id':'slotCardPhysicalAddress', 'type':'string', 'mode':''}
     )
         
-    _relations = (("FSP150Device",
+    _relations = ManagedEntity._relations + (("FSP150Device",
                    ToOne(ToManyCont,
                          "ZenPacks.Merit.AdvaFSP150CC.FSP150Device",
-                         "FSP150Slot")))
+                         "FSP150Slot",)),)
 
     factory_type_information = ({
         'actions': ({

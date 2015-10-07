@@ -51,12 +51,10 @@ class FSP150DeviceMib(SnmpPlugin):
             log.warn("Couldn't find model from neDescription")
             model = 'unknown'
 
-        rm = self.relMap()
         om = self.objectMap()
 
         om.neIndex = neTable['neIndex']
         om.neType = tag
         om.setHWProductKey = model
-        rm.append(om)
 
-        return rm
+        return om
