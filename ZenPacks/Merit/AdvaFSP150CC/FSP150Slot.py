@@ -35,7 +35,8 @@ class FSP150Slot(DeviceComponent, ManagedEntity, ZenPackPersistence):
 
     # set default _properties
     neShelfSlotIndex = ''
-    slotIndex = -1
+    slotEntityIndex = -1,
+    slotType = 'Not set by modeler'
     slotCardType = 'none'
     slotCardUnitName = 'Not set by modeler'
     slotCardCLEICode = 'unknown'
@@ -48,7 +49,8 @@ class FSP150Slot(DeviceComponent, ManagedEntity, ZenPackPersistence):
     _properties = (
         {'id':'neShelfSlotIndex', type:'string', 'mode':''},
         # from CM-ENTITY-MIB
-        {'id':'slotIndex', 'type':'int', 'mode':''},
+        {'id':'slotEntityIndex', 'type':'int', 'mode':''},
+        {'id':'slotType', 'type':'string', 'mode':''},
         {'id':'slotCardType', 'type':'string', 'mode':''},
         {'id':'slotCardUnitName', 'type':'string', 'mode':''},
         {'id':'slotCardCLEICode', 'type':'string', 'mode':''},
@@ -83,9 +85,9 @@ class FSP150Slot(DeviceComponent, ManagedEntity, ZenPackPersistence):
 
     def viewName(self):
         """Human readable version of this object"""
-        if self.slotCardUnitName == 'Not set by modeler' or self.slotIndex == '-1':
+        if self.slotCardUnitName == 'Not set by modeler':
             return "Unknown"
-        return(self.slotCardUnityName)
+        return(self.slotCardUnitName)
 
     name = viewName
 

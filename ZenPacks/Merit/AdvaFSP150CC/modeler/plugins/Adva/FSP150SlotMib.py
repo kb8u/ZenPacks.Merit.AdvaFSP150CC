@@ -10,7 +10,7 @@
 __doc__="""FSP150SlotMib
 
 FSP150SlotMib instantiates a FSP150 slot and populates the attributes
-for slotIndex, model, etc.
+for model, serial number, etc.
 
 """
 
@@ -24,6 +24,7 @@ class FSP150SlotMib(SnmpPlugin):
 
     # from Adva CM-ENTITY-MIB
     modname = "ZenPacks.Merit.AdvaFSP150CC.FSP150Slot"
+    relname = 'FSP150Slot'
 
     snmpGetTableMaps = (GetTableMap('slotTable',
                                     '.1.3.6.1.4.1.2544.1.12.3.1.3',
@@ -31,12 +32,12 @@ class FSP150SlotMib(SnmpPlugin):
                                       '.2' : 'slotEntityIndex',
                                       '.3' : 'slotType',
                                       '.4' : 'slotCardType',
-                                      '.5' : 'slotCardUnityName',
+                                      '.5' : 'slotCardUnitName',
                                       '.7' : 'slotCardCLEICode',
                                       '.8' : 'slotCardPartNumber',
                                       '.9' : 'slotHwRev',
                                       '.10': 'slotSwRev',
-                                      '.11': 'slotCardSerialNumber',
+                                      '.11': 'slotCardSerialNum',
                                       '.15': 'slotCardSecondaryState',
                                       '.16': 'slotCardPhysicalAddress', }),)
 
@@ -62,21 +63,18 @@ class FSP150SlotMib(SnmpPlugin):
         rm = self.relMap()
         for index in indexes:
             om = self.objectMap()
+            om.id = slotTable['5.' + index]['slotIndex']
             om.neShelfSlotIndex = index
-            om.neIndex = int(index.split('.')[-1])
             om.slotEntityIndex = slotTable['2.' + index]['slotIndex']
             om.slotType = slotType[str(slotTable['3.' + index]['slotIndex'])]
-            om.slotType = cardType[str(slotTable['4.' + index]['slotIndex'])]
-            om.slotCardUnityName = slotTable['5.' + index]['slotIndex']
+            om.slotCardType = cardType[str(slotTable['4.' +index]['slotIndex'])]
+            om.slotCardUnitName = slotTable['5.' + index]['slotIndex']
             om.slotCardCLEICode = slotTable['7.' + index]['slotIndex']
             om.slotCardPartNumber = slotTable['8.' + index]['slotIndex']
-            om.slotHwRev = slotTable['9.' + index]['slotIndex']
-            om.slotSwRev = slotTable['10.' + index]['slotIndex']
-            om.slotCardSerialNumber = slotTable['11.' + index]['slotIndex']
-            om.slotCardSecondaryState = slotTable['15.' + index]['slotIndex']
+            om.slotCardHwRev = slotTable['9.' + index]['slotIndex']
+            om.slotCardSwRev = slotTable['10.' + index]['slotIndex']
+            om.slotCardSerialNum = slotTable['11.' + index]['slotIndex']
             om.slotCardPhysicalAddress = slotTable['16.' + index]['slotIndex']
             rm.append(om)
-
-        log.debug('om is %s' % om)
 
         return rm
