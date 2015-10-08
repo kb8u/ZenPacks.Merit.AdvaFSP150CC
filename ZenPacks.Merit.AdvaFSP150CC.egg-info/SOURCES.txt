@@ -13,9 +13,12 @@ ZenPacks.Merit.AdvaFSP150CC.egg-info/test_info.txt
 ZenPacks.Merit.AdvaFSP150CC.egg-info/top_level.txt
 ZenPacks/Merit/__init__.py
 ZenPacks/Merit/__init__.pyc
+ZenPacks/Merit/AdvaFSP150CC/.FSP150NetPort.py.swp
 ZenPacks/Merit/AdvaFSP150CC/FSP150Device.py
 ZenPacks/Merit/AdvaFSP150CC/FSP150Device.pyc
+ZenPacks/Merit/AdvaFSP150CC/FSP150NetPort.py
 ZenPacks/Merit/AdvaFSP150CC/FSP150Slot.py
+ZenPacks/Merit/AdvaFSP150CC/FSP150Slot.pyc
 ZenPacks/Merit/AdvaFSP150CC/LICENSE.txt
 ZenPacks/Merit/AdvaFSP150CC/__init__.py
 ZenPacks/Merit/AdvaFSP150CC/__init__.pyc
@@ -36,6 +39,8 @@ ZenPacks/Merit/AdvaFSP150CC/modeler/plugins/__init__.py
 ZenPacks/Merit/AdvaFSP150CC/modeler/plugins/__init__.pyc
 ZenPacks/Merit/AdvaFSP150CC/modeler/plugins/Adva/FSP150DeviceMib.py
 ZenPacks/Merit/AdvaFSP150CC/modeler/plugins/Adva/FSP150DeviceMib.pyc
+ZenPacks/Merit/AdvaFSP150CC/modeler/plugins/Adva/FSP150NetPortMib.py
+ZenPacks/Merit/AdvaFSP150CC/modeler/plugins/Adva/FSP150NetPortMib.pyc
 ZenPacks/Merit/AdvaFSP150CC/modeler/plugins/Adva/FSP150SlotMib.py
 ZenPacks/Merit/AdvaFSP150CC/modeler/plugins/Adva/FSP150SlotMib.pyc
 ZenPacks/Merit/AdvaFSP150CC/modeler/plugins/Adva/__init__.py

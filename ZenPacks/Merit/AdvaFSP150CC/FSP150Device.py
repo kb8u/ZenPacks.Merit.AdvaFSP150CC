@@ -29,4 +29,8 @@ class FSP150Device(Device):
          ToManyCont(ToOne,
                     'ZenPacks.Merit.AdvaFSP150CC.FSP150Slot',
                     'FSP150Device')),
+        ('FSP150NetPort',
+         ToManyCont(ToOne,
+                    'ZenPacks.Merit.AdvaFSP150CC.FSP150NetPort',
+                    'FSP150Device')),
     )

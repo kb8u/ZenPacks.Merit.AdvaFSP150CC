@@ -42,7 +42,7 @@ class FSP150SlotMib(SnmpPlugin):
                                       '.16': 'slotCardPhysicalAddress', }),)
 
     def process(self, device, results, log):
-        log.info('processing %s for slot %s' % (self.name(), device.id))
+        log.info('processing %s for %s' % (self.name(), device.id))
         getdata, tabledata = results
 
         slotTable = tabledata.get('slotTable')
