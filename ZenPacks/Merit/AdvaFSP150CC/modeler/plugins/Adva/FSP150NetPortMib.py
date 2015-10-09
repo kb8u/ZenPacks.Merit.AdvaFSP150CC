@@ -47,7 +47,6 @@ class FSP150NetPortMib(SnmpPlugin):
             return
 
         log.debug('got netPortTable: %s' % netPortTable)
-        return
 
         # find the INDEXes returned for netPortTable
         indexes = []
@@ -55,23 +54,31 @@ class FSP150NetPortMib(SnmpPlugin):
             if oidend.startswith('1.'):
                 indexes.append(oidend.split('1.',1)[1])
         if not indexes:
+            log.debug('no indexes found for netPortTable in %s' % self.name())
             return
 
         rm = self.relMap()
         for index in indexes:
+            # cmEthernetNetPortAdminState of 1 means port is in service 
+            if netPortTable['4.' + index]['portIndex'] != 1:
+                log.info('Network port %s is not in service' % index)
+                continue
+            else:
+                log.info('Network port %s has been added' % index)
+
             om = self.objectMap()
-            om.id = netPortTable['5.' + index]['portIndex']
-            om.neShelfNetPortIndex = index
-            om.slotEntityIndex = netPortTable['2.' + index]['portIndex']
-            om.slotType = slotType[str(netPortTable['3.' + index]['portIndex'])]
-            om.slotCardType = cardType[str(netPortTable['4.' +index]['portIndex'])]
-            om.slotCardUnitName = netPortTable['5.' + index]['portIndex']
-            om.slotCardCLEICode = netPortTable['7.' + index]['portIndex']
-            om.slotCardPartNumber = netPortTable['8.' + index]['portIndex']
-            om.slotCardHwRev = netPortTable['9.' + index]['portIndex']
-            om.slotCardSwRev = netPortTable['10.' + index]['portIndex']
-            om.slotCardSerialNum = netPortTable['11.' + index]['portIndex']
-            m.slotCardPhysicalAddress = netPortTable['16.' + index]['portIndex']
+            om.id = index
+            om.neShelfSlotPortIndex = index
+            om.cmEthernetNetPortIfIndex =netPortTable['2.' + index]['portIndex']
+            om.cmEthernetNetPortEntityIndex = netPortTable['3.' + index]['portIndex']
+            om.cmEthernetNetPortAdminState = 'In Service'
+            om.cmEthernetNetPortSfpPartNumber = netPortTable['14.' + index]['portIndex']
+            # string like '40 km'
+            dx = str(int(netPortTable['69.' + index]['portIndex']/1000)) +' km'
+            om.cmEthernetNetPortSfpReach = dx
+            # string like '1310 nm'
+            wavelength = str(netPortTable['70.' + index]['portIndex']) + ' nm'
+            om.cmEthernetNetPortLaserWaveLength = wavelength
             rm.append(om)
 
         return rm
