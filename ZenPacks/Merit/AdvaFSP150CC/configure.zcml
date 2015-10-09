@@ -1,9 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<configure
-    xmlns="http://namespaces.zope.org/zope"
-    xmlns:zcml="http://namespaces.zope.org/zcml">
+<!-- for Adva FSP150 management                                              -->
+<!--                                                                         -->
+<!-- Copyright (C) 2015 Russell Dwarshuis, Merit Network, Inc.               -->
+<!--                                                                         -->
+<!-- This program can be used under the GNU General Public License version 2 -->
+<!-- You can find full information here: http://www.zenoss.com/oss           -->
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:browser="http://namespaces.zope.org/browser"
+           xmlns:zcml="http://namespaces.zope.org/zcml">
 
+    <configure zcml:condition="installed Products.Zuul">
+        <browser:resourceDirectory
+            name="AdvaFSP150"
+            directory="resources" />
 
+        <!-- Slot (container for other components) -->
+        <adapter
+            factory=".info.SlotInfo"
+            for=".FSP150Slot.FSP150Slot"
+            provides=".interfaces.ISlotInfo" />
+        <browser:viewlet
+            name="js-AdvaFSP150Slot"
+            paths="/++resource++AdvaFSP150/fsp150Slot.js"
+            weight="10"
+            manager="Products.ZenUI3.browser.interfaces.IJavaScriptSrcManager"
+            class="Products.ZenUI3.browser.javascript.JavaScriptSrcBundleViewlet"
+            permission="zope2.Public" />
 
+        <!-- Network Port -->
+        <adapter
+            factory=".info.NetPortInfo"
+            for=".FSP150NetPort.FSP150NetPort"
+            provides=".interfaces.INetPortInfo" />
+        <browser:viewlet
+            name="js-AdvaFSP150NetPort"
+            paths="/++resource++AdvaFSP150/fsp150NetPort.js"
+            weight="10"
+            manager="Products.ZenUI3.browser.interfaces.IJavaScriptSrcManager"
+            class="Products.ZenUI3.browser.javascript.JavaScriptSrcBundleViewlet"
+            permission="zope2.Public" />
+
+    </configure>
 </configure>
-

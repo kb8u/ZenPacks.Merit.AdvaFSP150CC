@@ -85,9 +85,9 @@ class FSP150Slot(DeviceComponent, ManagedEntity, ZenPackPersistence):
 
     def viewName(self):
         """Human readable version of this object"""
-        if self.slotCardUnitName == 'Not set by modeler':
+        if self.neShelfSlotIndex == '':
             return "Unknown"
-        return(self.slotCardUnitName)
+        return('Slot ' + self.neShelfSlotIndex.replace('.','-'))
 
     name = viewName
 
