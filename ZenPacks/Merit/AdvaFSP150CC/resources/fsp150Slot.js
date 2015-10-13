@@ -21,7 +21,7 @@ ZC.FSP150SlotPanel = Ext.extend(ZC.ComponentGridPanel, {
                 {name: 'name'},
                 {name: 'slotCardUnitName'},
                 {name: 'slotCardPartNumber'},
-                {name: 'slotCardSerialNum'}
+                {name: 'slotCardSerialNum'},
                 {name: 'usesMonitorAttribute'},
                 {name: 'monitor'},
                 {name: 'monitored'},

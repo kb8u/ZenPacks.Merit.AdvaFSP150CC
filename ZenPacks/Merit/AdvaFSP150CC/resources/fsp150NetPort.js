@@ -21,7 +21,7 @@ ZC.FSP150NetPortPanel = Ext.extend(ZC.ComponentGridPanel, {
                 {name: 'name'},
                 {name: 'cmEthernetNetPortSfpPartNumber'},
                 {name: 'cmEthernetNetPortSfpReach'},
-                {name: 'cmEthernetNetPortLaserWaveLength'}
+                {name: 'cmEthernetNetPortLaserWaveLength'},
                 {name: 'usesMonitorAttribute'},
                 {name: 'monitor'},
                 {name: 'monitored'},
