@@ -91,6 +91,11 @@ class FSP150Slot(DeviceComponent, ManagedEntity, ZenPackPersistence):
 
     name = viewName
 
+    def getRRDTemplateName(self):
+        if self.slotCardUnitName == 'Not set by modeler':
+            return
+        return self.slotCardUnitName
+
     def device(self):
         return self.FSP150Device()
 

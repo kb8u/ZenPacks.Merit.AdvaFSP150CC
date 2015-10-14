@@ -68,6 +68,7 @@ class FSP150NetPortMib(SnmpPlugin):
 
             om = self.objectMap()
             om.id = index
+            om.snmpindex = index
             om.neShelfSlotPortIndex = index
             om.cmEthernetNetPortIfIndex =netPortTable['2.' + index]['portIndex']
             om.cmEthernetNetPortEntityIndex = netPortTable['3.' + index]['portIndex']

@@ -63,8 +63,9 @@ class FSP150SlotMib(SnmpPlugin):
         rm = self.relMap()
         for index in indexes:
             om = self.objectMap()
-            om.id = slotTable['5.' + index]['slotIndex']
+            om.id = index
             om.neShelfSlotIndex = index
+            om.snmpindex = index
             om.slotEntityIndex = slotTable['2.' + index]['slotIndex']
             om.slotType = slotType[str(slotTable['3.' + index]['slotIndex'])]
             om.slotCardType = cardType[str(slotTable['4.' +index]['slotIndex'])]
