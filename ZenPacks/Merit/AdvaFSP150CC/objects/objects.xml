@@ -380,6 +380,26 @@ True
 0
 </property>
 </object>
+<object id='Excessive Test Packet Loss' module='Products.ZenModel.MinMaxThreshold' class='MinMaxThreshold'>
+<property type="string" id="eventClass" mode="w" >
+/Net/Link
+</property>
+<property type="int" id="severity" mode="w" >
+4
+</property>
+<property label="DataPoints" type="lines" id="dsnames" mode="w" >
+['PrevP2RLostPkts_PrevP2RLostPkts']
+</property>
+<property label="Enabled" type="boolean" id="enabled" mode="w" >
+True
+</property>
+<property type="string" id="maxval" mode="w" >
+2
+</property>
+<property type="int" id="escalateCount" mode="w" >
+0
+</property>
+</object>
 <object id='Excessive latency' module='Products.ZenModel.MinMaxThreshold' class='MinMaxThreshold'>
 <property type="string" id="eventClass" mode="w" >
 /Net/Link
@@ -1506,7 +1526,7 @@ False
 %5.2lf%s
 </property>
 <property type="string" id="legend" mode="w" >
-Drpos
+Drops
 </property>
 <property type="long" id="limit" mode="w" >
 -1
