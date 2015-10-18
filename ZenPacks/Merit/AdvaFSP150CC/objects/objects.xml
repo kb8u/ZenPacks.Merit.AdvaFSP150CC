@@ -1400,7 +1400,7 @@ True
 </object>
 </tomanycont>
 <tomanycont id='thresholds'>
-<object id='Low OPR' module='Products.ZenModel.MinMaxThreshold' class='MinMaxThreshold'>
+<object id='Low optical input power' module='Products.ZenModel.MinMaxThreshold' class='MinMaxThreshold'>
 <property type="string" id="eventClass" mode="w" >
 /Net/Link
 </property>
@@ -2015,5 +2015,17 @@ AVERAGE
 </tomanycont>
 </object>
 </tomanycont>
+</object>
+<!-- ('', 'zport', 'dmd', 'userCommands', 'update_Adva_OPR_threshold') -->
+<object id='/zport/dmd/userCommands/update_Adva_OPR_threshold' module='Products.ZenModel.UserCommand' class='UserCommand'>
+<property id='zendoc' type='string'>
+Create rrd template local copy and/or update the threshold for receive optical power so that they will generate an Error level alert if the optical signal degrades 3 dB from the current value.
+</property>
+<property type="text" id="description" mode="w" >
+Create rrd template local copy and/or update the threshold for receive optical power so that they will generate an Error level alert if the optical signal degrades 3 dB from the current value.
+</property>
+<property type="text" id="command" mode="w" >
+${here/ZenPackManager/packs/ZenPacks.Merit.AdvaFSP150CC/path}/libexec/set_optical_rx_threshold.py ${device/manageIp}
+</property>
 </object>
 </objects>
