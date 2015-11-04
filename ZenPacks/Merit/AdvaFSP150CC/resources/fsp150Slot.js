@@ -19,6 +19,7 @@ ZC.FSP150SlotPanel = Ext.extend(ZC.ComponentGridPanel, {
                 {name: 'uid'},
                 {name: 'severity'},
                 {name: 'name'},
+                {name: 'ckey'},
                 {name: 'slotCardUnitName'},
                 {name: 'slotCardPartNumber'},
                 {name: 'slotCardSerialNum'},
@@ -38,7 +39,13 @@ ZC.FSP150SlotPanel = Ext.extend(ZC.ComponentGridPanel, {
                 dataIndex: 'name',
                 header: _t('Name'),
                 sortable: true,
-                width: 150
+                width: 75
+            },{
+                id: 'ckey',
+                dataIndex: 'ckey',
+                header: _t('Ckey'),
+                sortable: true,
+                width: 75
             },{
                 id: 'slotCardUnitName',
                 dataIndex: 'slotCardUnitName',

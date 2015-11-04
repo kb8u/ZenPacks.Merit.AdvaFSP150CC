@@ -45,6 +45,7 @@ class FSP150Slot(DeviceComponent, ManagedEntity, ZenPackPersistence):
     slotCardSwRev = 'Not set by modeler'
     slotCardSerialNum = 'Not set by modeler'
     slotCardPhysicalAddress = 'Not set by modeler'
+    ckey = 0
 
     _properties = (
         {'id':'neShelfSlotIndex', type:'string', 'mode':''},
@@ -58,7 +59,8 @@ class FSP150Slot(DeviceComponent, ManagedEntity, ZenPackPersistence):
         {'id':'slotCardHwRev', 'type':'string', 'mode':''},
         {'id':'slotCardSwRev', 'type':'string', 'mode':''},
         {'id':'slotCardSerialNum', 'type':'string', 'mode':''},
-        {'id':'slotCardPhysicalAddress', 'type':'string', 'mode':''}
+        {'id':'slotCardPhysicalAddress', 'type':'string', 'mode':''},
+        {'id':'ckey', 'type':'int', 'mode':''}
     )
         
     _relations = ManagedEntity._relations + (("FSP150Device",

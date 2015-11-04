@@ -28,6 +28,7 @@ class SlotInfo(ComponentInfo):
     slotCardUnitName = ProxyProperty("slotCardUnitName")
     slotCardPartNumber = ProxyProperty("slotCardPartNumber")
     slotCardSerialNum = ProxyProperty("slotCardSerialNum")
+    ckey = ProxyProperty("ckey")
 
 class NetPortInfo(ComponentInfo):
     implements(interfaces.INetPortInfo)
