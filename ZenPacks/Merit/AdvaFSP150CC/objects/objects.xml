@@ -342,7 +342,7 @@ True
 </object>
 <object id='Any Test Packet Loss' module='Products.ZenModel.MinMaxThreshold' class='MinMaxThreshold'>
 <property type="string" id="eventClass" mode="w" >
-/Net/Link
+/Net/Link/y1731
 </property>
 <property type="int" id="severity" mode="w" >
 3
@@ -362,7 +362,7 @@ True
 </object>
 <object id='Excessive Jitter' module='Products.ZenModel.MinMaxThreshold' class='MinMaxThreshold'>
 <property type="string" id="eventClass" mode="w" >
-/Net/Link
+/Net/Link/y1731
 </property>
 <property type="int" id="severity" mode="w" >
 4
@@ -382,7 +382,7 @@ True
 </object>
 <object id='Excessive Test Packet Loss' module='Products.ZenModel.MinMaxThreshold' class='MinMaxThreshold'>
 <property type="string" id="eventClass" mode="w" >
-/Net/Link
+/Net/Link/y1731
 </property>
 <property type="int" id="severity" mode="w" >
 4
@@ -402,7 +402,7 @@ True
 </object>
 <object id='Excessive latency' module='Products.ZenModel.MinMaxThreshold' class='MinMaxThreshold'>
 <property type="string" id="eventClass" mode="w" >
-/Net/Link
+/Net/Link/y1731
 </property>
 <property type="int" id="severity" mode="w" >
 4
@@ -2015,6 +2015,27 @@ AVERAGE
 </tomanycont>
 </object>
 </tomanycont>
+</object>
+<!-- ('', 'zport', 'dmd', 'Events', 'Net', 'Link', 'y1731') -->
+<object id='/zport/dmd/Events/Net/Link/y1731' module='Products.ZenEvents.EventClass' class='EventClass'>
+<property type="text" id="transform" mode="w" >
+# make Y.1731 test failure event summary more informative
+ckey = '0'
+if device is not None:
+    for c in device.getMonitoredComponents():
+        if c.__class__.__name__ == 'FSP150Slot' and c.id == evt.component:
+            ckey = getattr(c,'ckey', '0')
+            break
+
+m = re.match('threshold of (Any|Excessive) Test Packet Loss exceeded: current value (.*)$', evt.summary)
+if m:
+    try:
+        # number of lost packets
+        loss = str(int(float(m.group(2))))
+    except ValueError:
+        loss = '(unknown number)'
+    evt.summary = 'Circuit ckey %d has packet loss: Lost %s packets https://confluence.merit.edu/confluence/display/SD/Adva+FSP150+Equipment' % (ckey, loss)
+</property>
 </object>
 <!-- ('', 'zport', 'dmd', 'userCommands', 'update_Adva_OPR_threshold') -->
 <object id='/zport/dmd/userCommands/update_Adva_OPR_threshold' module='Products.ZenModel.UserCommand' class='UserCommand'>
