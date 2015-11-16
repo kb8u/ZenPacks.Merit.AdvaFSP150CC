@@ -322,7 +322,7 @@ True
 <tomanycont id='thresholds'>
 <object id='AdminStatus' module='Products.ZenModel.MinMaxThreshold' class='MinMaxThreshold'>
 <property type="string" id="eventClass" mode="w" >
-/HW/Blade
+/HW/Blade/FSP150
 </property>
 <property type="int" id="severity" mode="w" >
 3
@@ -2016,10 +2016,38 @@ AVERAGE
 </object>
 </tomanycont>
 </object>
+<!-- ('', 'zport', 'dmd', 'Events', 'HW', 'Blade', 'FSP150') -->
+<object id='/zport/dmd/Events/HW/Blade/FSP150' module='Products.ZenEvents.EventClass' class='EventClass'>
+<property type="text" id="transform" mode="w" >
+import re
+
+adminState = -1
+
+m = re.match('threshold of AdminStatus exceeded: current value (.*)$', evt.summary)
+if m:
+    try:
+        adminState = float(m.group(1))
+    except ValueError:
+        pass
+
+if adminState &lt; 1:
+    evt.summary = 'Component is not in-service'
+if adminState &gt; 1 and adminState &lt;= 2:
+    evt.summary = 'Component is in management state instead of in-service'
+if adminState &gt; 2 and adminState &lt;= 3:
+    evt.summary = 'Component is in maintenance state instead of in-service'
+if adminState &gt; 3 and adminState &lt;= 4:
+    evt.summary = 'Component is in disabled state instead of in-service'
+if adminState &gt; 4:
+    evt.summary = 'Component is in unassigned state instead of in-service'
+</property>
+</object>
 <!-- ('', 'zport', 'dmd', 'Events', 'Net', 'Link', 'y1731') -->
 <object id='/zport/dmd/Events/Net/Link/y1731' module='Products.ZenEvents.EventClass' class='EventClass'>
 <property type="text" id="transform" mode="w" >
 # make Y.1731 test failure event summary more informative
+import re
+
 ckey = '0'
 if device is not None:
     for c in device.getMonitoredComponents():
@@ -2032,9 +2060,26 @@ if m:
     try:
         # number of lost packets
         loss = str(int(float(m.group(2))))
+        evt.summary = 'Circuit ckey %d has packet loss: Lost %s packets https://confluence.merit.edu/confluence/display/SD/Adva+FSP150+Equipment' % (ckey, loss)
     except ValueError:
-        loss = '(unknown number)'
-    evt.summary = 'Circuit ckey %d has packet loss: Lost %s packets https://confluence.merit.edu/confluence/display/SD/Adva+FSP150+Equipment' % (ckey, loss)
+        pass
+
+m = re.match('threshold of Excessive latency exceeded: current value (.*)$', evt.summary)
+if m:
+    try:
+        ms =  float(m.group(1)) / 1000
+        evt.summary = 'Circuit ckey %d has %.1f milliseconds latency.  https://confluence.merit.edu/confluence/display/SD/Adva+FSP150+Equipment' % (ckey, ms)
+    except ValueError:
+        pass
+
+
+m = re.match('threshold of Excessive Jitter exceeded: current value (.*)$', evt.summary)
+if m:
+    try:
+        ms =  float(m.group(1)) / 1000
+        evt.summary = 'Circuit ckey %d has %.1f milliseconds jitter.  https://confluence.merit.edu/confluence/display/SD/Adva+FSP150+Equipment' % (ckey, ms)
+    except ValueError:
+        pass
 </property>
 </object>
 <!-- ('', 'zport', 'dmd', 'userCommands', 'update_Adva_OPR_threshold') -->
