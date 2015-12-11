@@ -16,5 +16,19 @@ NetworkElementType = {
     '14': 'XG210 with 2 Auxiliary Slots',
     '15': 'T1804',
     '16': 'T3204',
-    '17': 'Sync Probe'
+    '17': 'Sync Probe',
+    '18': 'GE114H',
+    '19': 'GE114PH',
+    '20': 'GE114SH',
+    '21': 'GE114S',
+    '22': 'SH1PCS',
+    '23': 'OSA5411',
+    '24': 'GE112PRO',
+    '25': 'GE112PROM',
+    '26': 'GE114PRO',
+    '27': 'GE114PROC',
+    '28': 'GE114PROSH',
+    '29': 'GE114PROCSH',
+    '30': 'GE114PROHE',
+    '31': 'GE112PROH'
 }
