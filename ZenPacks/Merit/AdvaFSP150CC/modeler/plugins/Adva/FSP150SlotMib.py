@@ -67,8 +67,21 @@ class FSP150SlotMib(SnmpPlugin):
             om.neShelfSlotIndex = index
             om.snmpindex = index
             om.slotEntityIndex = slotTable['2.' + index]['slotIndex']
-            om.slotType = slotType[str(slotTable['3.' + index]['slotIndex'])]
-            om.slotCardType = cardType[str(slotTable['4.' +index]['slotIndex'])]
+            try:
+                om.slotType =slotType[str(slotTable['3.' + index]['slotIndex'])]
+            except KeyError:
+                log.error('Unknown slotType %s for slot %s' % \
+                          (str(slotTable['3.' + index]['slotIndex']), index))
+                log.error('This needs to be added to zenpack lib/slotTypes.py')
+                om.slotType = 'unknown'
+            try:
+                om.slotCardType = cardType[str(slotTable['4.' +index]['slotIndex'])]
+            except KeyError:
+                log.error('Unknown cardType %s for slot %s' % \
+                          (str(slotTable['4.' +index]['slotIndex']), index))
+                log.error('This needs to be added to zenpack lib/cardModels.py')
+                om.slotCardType = 'unknown'
+                
             om.slotCardUnitName = slotTable['5.' + index]['slotIndex']
             om.slotCardCLEICode = slotTable['7.' + index]['slotIndex']
             om.slotCardPartNumber = slotTable['8.' + index]['slotIndex']
